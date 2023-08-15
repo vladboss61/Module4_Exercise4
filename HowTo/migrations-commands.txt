@@ -1,0 +1,21 @@
+Code first 
+dotnet ef migrations add InitCreateDatabase --context ApplicationContext// --context нужно указывать когда у вас несколько классов контекстов.
+
+dotnet ef migrations add AddSize1Field //  add specific migration AddSize1Field when you update field
+
+dotnet ef migrations remove // --remove migrations
+dotnet ef migrations list
+
+//apply
+dotnet ef database update // apply all migrations
+// revert
+dotnet ef database update 0// revert all migrations
+
+dotnet ef migrations script // sql Up script of migrations
+dotnet ef migrations script AddSize1Field 0 // sql Down script from AddSize1Field to 0
+dotnet ef migrations script InitCreateDatabase AddSize1Field // sql Up script from InitCreateDatabase to AddSize1Field migration
+
+dotnet ef database update AddSize1Field //  apply all / or revert its depends of your current state of migration process list. Migrations to AddSize1Field
+
+Database First
+dotnet ef dbcontext scaffold "Data Source=localhost\SQLEXPRESS;Initial Catalog=AdventureWorksLT2019;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -o Model -c "AdventureContext"

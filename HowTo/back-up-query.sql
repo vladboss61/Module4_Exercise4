@@ -1,0 +1,5 @@
+USE [master]
+RESTORE DATABASE [AdventureWorks2019] 
+FROM  DISK = N'YOUR_PATH_HERE\AdventureWorks2019.bak' 
+WITH  FILE = 1,  NOUNLOAD,  STATS = 5
+GO

@@ -1,0 +1,27 @@
+default configs for SQL Server 2019
+
+Download sql server express by link
+https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+
+Video how to install.
+
+https://www.youtube.com/watch?time_continue=96&v=7GVFYt6_ZFM&feature=emb_logo
+
+install and go inside:
+
+1) Microsfot SQL Server
+2) Microsfot SQL Server Management Studio (MSSMS)
+3) Connect to SQL Server with credentials in MSSMS 
+	Server Name: localhost\SQLEXPRESS
+	Authentication: Windows Authentication
+
+4) Execute sql scripts from download-sample-database folder in the next order:
+
+ - HowTo\download-sample-database\sample-create-database.sql
+ - HowTo\download-sample-database\sample-insert-queries.sql
+ - HowTo\download-sample-database\how-to-get-connection-string.sql -- optinal script to obtain connection string for the application.
+	
+
+Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True; -- connection string
+-- localhost\SQLEXPRESS - MS SQL Server Studio + Windows Auth
+
