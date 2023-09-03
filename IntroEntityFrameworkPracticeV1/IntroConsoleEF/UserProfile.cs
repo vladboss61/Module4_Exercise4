@@ -10,7 +10,7 @@ namespace IntroConsoleEF
         
         public string ImageUrl { get; set; }
         
-        public string Abount { get; set; }
+        public string About { get; set; }
         
         public int UserId { get; set; }
 

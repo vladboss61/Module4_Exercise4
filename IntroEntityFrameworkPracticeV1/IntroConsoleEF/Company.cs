@@ -14,6 +14,6 @@ namespace IntroConsoleEF
      
         public DateTime FoundationDate { get; set; }
 
-        public List<SupplyHistory> SupplyHistoriy { get; set; }
+        public List<SupplyHistory> SupplyHistory { get; set; }
     }
 }

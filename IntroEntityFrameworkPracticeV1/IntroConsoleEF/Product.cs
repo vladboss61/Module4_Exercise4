@@ -12,6 +12,6 @@ namespace IntroConsoleEF
 
         public List<Company> Companies { get; set; }
 
-        public List<SupplyHistory> SupplyHistoriy { get; set; }
+        public List<SupplyHistory> SupplyHistory { get; set; }
     }
 }
