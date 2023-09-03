@@ -9,7 +9,7 @@ namespace IntroConsoleEF
     {
         static void Main(string[] args)
         {
-            using (var context = new ApplicationContext("Data Source=DESKTOP-EEE2PPD;Initial Catalog = Application;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+            using (var context = new ApplicationContext("Data Source=localhost;Initial Catalog = Application;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
             {
                 var users = context.Users.ToList();
                 var companies = context.Companies.ToList();

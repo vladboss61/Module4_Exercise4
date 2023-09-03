@@ -6,7 +6,7 @@ using System.Text;
 
 namespace IntroConsoleEF.Configurations
 {
-    public class CompanyConfguration : IEntityTypeConfiguration<Company>
+    public class CompanyConfiguration : IEntityTypeConfiguration<Company>
     {
         public void Configure(EntityTypeBuilder<Company> builder)
         {

@@ -18,4 +18,4 @@ dotnet ef migrations script InitCreateDatabase AddSize1Field // sql Up script fr
 dotnet ef database update AddSize1Field //  apply all / or revert its depends of your current state of migration process list. Migrations to AddSize1Field
 
 Database First
-dotnet ef dbcontext scaffold "Data Source=localhost\SQLEXPRESS;Initial Catalog=AdventureWorksLT2019;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -o Model -c "AdventureContext"
+dotnet ef dbcontext scaffold "Data Source=localhost;Initial Catalog=AdventureWorksLT2019;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -o Model -c "AdventureContext"

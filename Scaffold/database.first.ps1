@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Data Source=localhost;Initial Catalog=AdventureWorksLT2019;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -o Model -c "AdventureContext"
