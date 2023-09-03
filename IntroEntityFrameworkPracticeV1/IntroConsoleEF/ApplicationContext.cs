@@ -1,15 +1,10 @@
 ﻿using IntroConsoleEF.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IntroConsoleEF
 {
     public class ApplicationContext : DbContext
     {
-        private readonly string _connectionString;
-
         public DbSet<User> Users { get; set; }
 
         public DbSet<Company> Companies { get; set; }
@@ -18,16 +13,16 @@ namespace IntroConsoleEF
         
         public DbSet<UserProfile> UserProfiles { get; set; }
 
-        public ApplicationContext(string connectionString)
+        //Required
+        public ApplicationContext()
         {
-            _connectionString = connectionString;
-        }
 
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseMemoryCache();
-            optionsBuilder.UseSqlServer(_connectionString);
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog = Application;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
