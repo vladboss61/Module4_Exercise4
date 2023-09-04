@@ -25,11 +25,8 @@ namespace IntroConsoleEF.Migrations
             modelBuilder.Entity("IntroConsoleEF.Company", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("CompanyId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("FoundationDate")
                         .HasColumnType("datetime2");
@@ -157,9 +154,11 @@ namespace IntroConsoleEF.Migrations
 
             modelBuilder.Entity("IntroConsoleEF.Company", b =>
                 {
-                    b.HasOne("IntroConsoleEF.Product", null)
+                    b.HasOne("IntroConsoleEF.Product", "Product")
                         .WithMany("Companies")
                         .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("IntroConsoleEF.SupplyHistory", b =>
@@ -180,7 +179,7 @@ namespace IntroConsoleEF.Migrations
             modelBuilder.Entity("IntroConsoleEF.User", b =>
                 {
                     b.HasOne("IntroConsoleEF.Company", "Company")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
@@ -198,6 +197,8 @@ namespace IntroConsoleEF.Migrations
             modelBuilder.Entity("IntroConsoleEF.Company", b =>
                 {
                     b.Navigation("SupplyHistory");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("IntroConsoleEF.Product", b =>

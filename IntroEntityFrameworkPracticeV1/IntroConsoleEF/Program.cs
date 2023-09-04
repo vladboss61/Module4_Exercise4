@@ -1,4 +1,5 @@
 ﻿using IntroConsoleEF.Context;
+using IntroConsoleEF.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;

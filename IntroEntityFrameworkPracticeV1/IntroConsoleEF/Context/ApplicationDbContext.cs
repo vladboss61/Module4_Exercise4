@@ -1,5 +1,7 @@
 ﻿using IntroConsoleEF.Configurations;
+using IntroConsoleEF.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace IntroConsoleEF
 {

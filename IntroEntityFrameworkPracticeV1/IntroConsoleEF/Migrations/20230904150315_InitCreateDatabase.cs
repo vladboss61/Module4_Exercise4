@@ -29,8 +29,7 @@ namespace IntroConsoleEF.Migrations
                 name: "Company",
                 columns: table => new
                 {
-                    CompanyId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Revenue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     ProductId = table.Column<int>(type: "int", nullable: true),
