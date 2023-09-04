@@ -16,7 +16,8 @@ namespace IntroConsoleEF.Configurations
 
             builder
                 .Property(p => p.Id)
-                .HasColumnName("CompanyId");
+                .HasColumnName("CompanyId")
+                .ValueGeneratedNever();
         }
     }
 }
