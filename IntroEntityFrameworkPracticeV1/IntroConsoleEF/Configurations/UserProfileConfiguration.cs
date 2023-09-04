@@ -13,6 +13,10 @@ namespace IntroConsoleEF.Configurations
             builder
                .ToTable("UserProfile")
                .HasKey(p => p.Id);
+
+            builder
+                 .Property(p => p.Id)
+                 .ValueGeneratedNever();
         }
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace IntroConsoleEF.Migrations
 {
     /// <inheritdoc />
@@ -15,8 +17,7 @@ namespace IntroConsoleEF.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -32,8 +33,8 @@ namespace IntroConsoleEF.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Revenue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    FoundationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: true)
+                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    FoundationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,8 +52,8 @@ namespace IntroConsoleEF.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    CompanyId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    CompanyId = table.Column<int>(type: "int", nullable: true),
                     ShipmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false)
                 },
@@ -63,26 +64,23 @@ namespace IntroConsoleEF.Migrations
                         name: "FK_SupplyHistory_Company_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Company",
-                        principalColumn: "CompanyId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CompanyId");
                     table.ForeignKey(
                         name: "FK_SupplyHistory_Product_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Product",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ProductId");
                 });
 
             migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HiredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CompanyId = table.Column<int>(type: "int", nullable: false)
+                    CompanyId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -91,19 +89,17 @@ namespace IntroConsoleEF.Migrations
                         name: "FK_User_Company_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Company",
-                        principalColumn: "CompanyId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CompanyId");
                 });
 
             migrationBuilder.CreateTable(
                 name: "UserProfile",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Abount = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    About = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -112,8 +108,16 @@ namespace IntroConsoleEF.Migrations
                         name: "FK_UserProfile_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Product",
+                columns: new[] { "ProductId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Guitare" },
+                    { 2, "IPhone" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -140,7 +144,8 @@ namespace IntroConsoleEF.Migrations
                 name: "IX_UserProfile_UserId",
                 table: "UserProfile",
                 column: "UserId",
-                unique: true);
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
         }
 
         /// <inheritdoc />

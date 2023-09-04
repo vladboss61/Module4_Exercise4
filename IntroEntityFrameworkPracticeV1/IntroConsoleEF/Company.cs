@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace IntroConsoleEF
 {
@@ -11,7 +10,9 @@ namespace IntroConsoleEF
         public string Name { get; set; }
         
         public decimal? Revenue { get; set; }
-     
+
+        public int? ProductId { get; set; }
+
         public DateTime FoundationDate { get; set; }
 
         public List<SupplyHistory> SupplyHistory { get; set; }

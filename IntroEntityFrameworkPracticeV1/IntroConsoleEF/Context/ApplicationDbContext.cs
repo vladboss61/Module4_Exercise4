@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IntroConsoleEF
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
 
@@ -14,7 +14,12 @@ namespace IntroConsoleEF
         public DbSet<UserProfile> UserProfiles { get; set; }
 
         //Required
-        public ApplicationContext()
+        public ApplicationDbContext()
+        {
+
+        }
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
 
         }
@@ -22,7 +27,7 @@ namespace IntroConsoleEF
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseMemoryCache();
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog = Application;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            //optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog = ConsoleApplication;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

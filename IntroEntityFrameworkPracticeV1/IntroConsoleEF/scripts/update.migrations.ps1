@@ -1,1 +1,1 @@
-dotnet ef database update --connection "Data Source=localhost;Initial Catalog = Application;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+dotnet ef database update #--connection "Data Source=localhost;Initial Catalog = ConsoleApplication;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"

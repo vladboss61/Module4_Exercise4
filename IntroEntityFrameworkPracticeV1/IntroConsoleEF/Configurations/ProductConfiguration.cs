@@ -13,16 +13,27 @@ namespace IntroConsoleEF.Configurations
             builder
                 .ToTable("Product")
                 .HasKey(p => p.Id);
-            
-            builder
+
+           builder
                 .Property(p => p.Id)
                 .HasColumnName("ProductId")
-                .ValueGeneratedOnAdd();
+                .ValueGeneratedNever();
 
             builder.Property(p => p.Name)
                 .HasColumnName("Name")
                 .IsRequired()
                 .HasMaxLength(255);
+
+            builder.HasData(new Product
+            {
+                Id = 1,
+                Name = "Guitare",
+            },
+            new Product
+            {
+                Id = 2,
+                Name = "IPhone"
+            });
         }
     }
 }
