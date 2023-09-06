@@ -14,7 +14,6 @@
 #dotnet ef database update Name_Of_Migration_2 # Name_Of_Migration_2
 
 #dotnet ef database drop # drop database
-#dotnet ef migrations script 0 Name_Of_Migration # Display the executable SQL script
+#dotnet ef migrations script 0 Name_Of_Migration # (--from 0 --to Name_Of_Migration) Display the executable SQL script
 
-dotnet ef database update #--connection "Data Source=localhost;Initial Catalog = ConsoleApplication;Integrated Security=True;Connect Timeout=
-30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+dotnet ef database update #--connection "Data Source=localhost;Initial Catalog = ConsoleApplication;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"

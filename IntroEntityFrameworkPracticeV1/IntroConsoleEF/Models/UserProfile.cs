@@ -16,6 +16,6 @@ namespace IntroConsoleEF.Models
 
         public int? UserId { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
     }
 }

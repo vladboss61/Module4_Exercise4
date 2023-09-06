@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace IntroConsoleEF.Configurations
@@ -17,7 +19,12 @@ namespace IntroConsoleEF.Configurations
 
             builder
                  .Property(p => p.Id);
-                 //.ValueGeneratedNever();
+            //.ValueGeneratedNever();
+            
+            builder
+                .HasOne(e => e.Profile)
+                .WithOne(e => e.User)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

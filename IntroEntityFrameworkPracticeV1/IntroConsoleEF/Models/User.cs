@@ -16,8 +16,8 @@ namespace IntroConsoleEF.Models
 
         public int? CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
-        public UserProfile Profile { get; set; }
+        public virtual UserProfile Profile { get; set; }
     }
 }

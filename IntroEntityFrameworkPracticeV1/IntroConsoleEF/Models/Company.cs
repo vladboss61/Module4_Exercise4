@@ -15,12 +15,12 @@ namespace IntroConsoleEF.Models
 
         public int? ProductId { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         public DateTime FoundationDate { get; set; }
 
-        public List<User> Users { get; set; }
+        public virtual List<User> Users { get; set; }
 
-        public List<SupplyHistory> SupplyHistory { get; set; }
+        public virtual List<SupplyHistory> SupplyHistory { get; set; }
     }
 }

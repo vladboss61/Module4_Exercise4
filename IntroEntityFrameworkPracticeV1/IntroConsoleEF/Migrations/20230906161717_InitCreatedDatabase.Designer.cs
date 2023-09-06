@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IntroConsoleEF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230906090212_InitCreateDatabase")]
-    partial class InitCreateDatabase
+    [Migration("20230906161717_InitCreatedDatabase")]
+    partial class InitCreatedDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,9 @@ namespace IntroConsoleEF.Migrations
                         .HasColumnName("CompanyId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AuditInfo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FoundationDate")
                         .HasColumnType("datetime2");

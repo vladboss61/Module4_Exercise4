@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IntroConsoleEF.Migrations
 {
     /// <inheritdoc />
-    public partial class InitCreateDatabase : Migration
+    public partial class InitCreatedDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,6 +34,7 @@ namespace IntroConsoleEF.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Revenue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    AuditInfo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProductId = table.Column<int>(type: "int", nullable: true),
                     FoundationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },

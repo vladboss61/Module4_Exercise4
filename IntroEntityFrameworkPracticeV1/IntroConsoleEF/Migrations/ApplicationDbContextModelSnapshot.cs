@@ -111,7 +111,7 @@ namespace IntroConsoleEF.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("SupplyHistory");
+                    b.ToTable("SupplyHistory", (string)null);
                 });
 
             modelBuilder.Entity("IntroConsoleEF.Models.User", b =>
