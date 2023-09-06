@@ -4,17 +4,17 @@ using System.Text;
 
 namespace IntroConsoleEF.Models
 {
-    public sealed class SupplyHistory
+    public class SupplyHistory
     {
         public int Id { get; set; }
 
         public int? ProductId { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         public int? CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
         public DateTime ShipmentDate { get; set; }
 

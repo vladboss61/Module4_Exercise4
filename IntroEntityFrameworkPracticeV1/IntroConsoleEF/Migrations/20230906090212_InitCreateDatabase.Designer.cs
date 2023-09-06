@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IntroConsoleEF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230904150315_InitCreateDatabase")]
+    [Migration("20230906090212_InitCreateDatabase")]
     partial class InitCreateDatabase
     {
         /// <inheritdoc />
@@ -25,11 +25,14 @@ namespace IntroConsoleEF.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("IntroConsoleEF.Company", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.Company", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("CompanyId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("FoundationDate")
                         .HasColumnType("datetime2");
@@ -50,11 +53,14 @@ namespace IntroConsoleEF.Migrations
                     b.ToTable("Company", (string)null);
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.Product", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.Product", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("ProductId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -79,7 +85,7 @@ namespace IntroConsoleEF.Migrations
                         });
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.SupplyHistory", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.SupplyHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,10 +114,13 @@ namespace IntroConsoleEF.Migrations
                     b.ToTable("SupplyHistory");
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.User", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.User", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("CompanyId")
                         .HasColumnType("int");
@@ -132,10 +141,13 @@ namespace IntroConsoleEF.Migrations
                     b.ToTable("User", (string)null);
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.UserProfile", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.UserProfile", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("About")
                         .HasColumnType("nvarchar(max)");
@@ -155,22 +167,22 @@ namespace IntroConsoleEF.Migrations
                     b.ToTable("UserProfile", (string)null);
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.Company", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.Company", b =>
                 {
-                    b.HasOne("IntroConsoleEF.Product", "Product")
+                    b.HasOne("IntroConsoleEF.Models.Product", "Product")
                         .WithMany("Companies")
                         .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.SupplyHistory", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.SupplyHistory", b =>
                 {
-                    b.HasOne("IntroConsoleEF.Company", "Company")
+                    b.HasOne("IntroConsoleEF.Models.Company", "Company")
                         .WithMany("SupplyHistory")
                         .HasForeignKey("CompanyId");
 
-                    b.HasOne("IntroConsoleEF.Product", "Product")
+                    b.HasOne("IntroConsoleEF.Models.Product", "Product")
                         .WithMany("SupplyHistory")
                         .HasForeignKey("ProductId");
 
@@ -179,39 +191,39 @@ namespace IntroConsoleEF.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.User", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.User", b =>
                 {
-                    b.HasOne("IntroConsoleEF.Company", "Company")
+                    b.HasOne("IntroConsoleEF.Models.Company", "Company")
                         .WithMany("Users")
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.UserProfile", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.UserProfile", b =>
                 {
-                    b.HasOne("IntroConsoleEF.User", "User")
+                    b.HasOne("IntroConsoleEF.Models.User", "User")
                         .WithOne("Profile")
-                        .HasForeignKey("IntroConsoleEF.UserProfile", "UserId");
+                        .HasForeignKey("IntroConsoleEF.Models.UserProfile", "UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.Company", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.Company", b =>
                 {
                     b.Navigation("SupplyHistory");
 
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.Product", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.Product", b =>
                 {
                     b.Navigation("Companies");
 
                     b.Navigation("SupplyHistory");
                 });
 
-            modelBuilder.Entity("IntroConsoleEF.User", b =>
+            modelBuilder.Entity("IntroConsoleEF.Models.User", b =>
                 {
                     b.Navigation("Profile");
                 });

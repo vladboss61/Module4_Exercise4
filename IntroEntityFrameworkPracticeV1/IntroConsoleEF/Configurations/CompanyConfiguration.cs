@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using System.Text;
 
 namespace IntroConsoleEF.Configurations
@@ -17,8 +18,8 @@ namespace IntroConsoleEF.Configurations
 
             builder
                 .Property(p => p.Id)
-                .HasColumnName("CompanyId")
-                .ValueGeneratedNever();
+                .HasColumnName("CompanyId");
+            //.ValueGeneratedNever();
         }
     }
 }

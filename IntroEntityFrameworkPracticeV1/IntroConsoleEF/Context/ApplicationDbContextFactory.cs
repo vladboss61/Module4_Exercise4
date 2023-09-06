@@ -25,7 +25,9 @@ internal class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applica
         }
 
         var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        builder.UseSqlServer(_connectionString);
+        builder
+             //.UseLazyLoadingProxies()
+            .UseSqlServer(_connectionString);
 
         return new ApplicationDbContext(builder.Options);
     }
