@@ -11,6 +11,8 @@ namespace IntroConsoleEF.Models
 
         public decimal? Revenue { get; set; }
 
+        public string AuditInfo { get; set; }
+
         public int? ProductId { get; set; }
 
         public Product Product { get; set; }
