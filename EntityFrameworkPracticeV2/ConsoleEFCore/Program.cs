@@ -5,15 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System.Security.Cryptography.X509Certificates;
 
 namespace ConsoleEFCore
 {
     public class JoinedUserCompany
     {
-        public int CompamyId { get; set; }
+        public int CompanyId { get; set; }
 
-        public string CompamyName { get; set; }
+        public string CompanyName { get; set; }
 
         public string UserName { get; set; }
 
@@ -49,6 +48,8 @@ namespace ConsoleEFCore
         {
             await using (ConsoleApplicationContext context = new ConsoleApplicationContextFactory().CreateDbContext(Array.Empty<string>()))
             {
+                context.Database.EnsureCreated();
+
                 //No Lazy Loading.
                 var users = context.Users.Include(x => x.Company);
 
@@ -61,8 +62,8 @@ namespace ConsoleEFCore
                 var joined = context.Companies.Join(context.Users, company => company.Id, user => user.CompanyId, (comp, use) =>
                         new JoinedUserCompany
                         {
-                            CompamyId = comp.Id,
-                            CompamyName = comp.Name,
+                            CompanyId = comp.Id,
+                            CompanyName = comp.Name,
                             UserId = use.UserId,
                             UserName = use.FirstName + " " + use.LastName,
                         }).ToArray();
