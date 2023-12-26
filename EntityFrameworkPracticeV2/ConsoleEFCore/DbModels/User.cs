@@ -14,8 +14,8 @@ namespace ConsoleEFCore.DbModels
 
         public int? CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public Company Company { get; set; } // navigation property.
 
-        public UserProfile Profile { get; set; }
+        public UserProfile Profile { get; set; } // navigation property.
     }
 }

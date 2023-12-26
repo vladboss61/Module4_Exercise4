@@ -12,10 +12,10 @@ namespace ConsoleEFCore.DbModels
 
         public string Name { get; set; }
 
-        public List<Company> Companies { get; set; }
+        public List<Company> Companies { get; set; } //navigation property.
 
-        public List<SupplyHistory> SupplyHistory { get; set; }
+        public List<SupplyHistory> SupplyHistory { get; set; } //navigation property.
 
-        public ProductVersion ProductVersion { get; set; }
+        public ProductVersion ProductVersion { get; set; } //navigation property.
     }
 }

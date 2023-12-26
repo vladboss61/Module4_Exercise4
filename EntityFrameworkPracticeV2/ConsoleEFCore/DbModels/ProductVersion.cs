@@ -12,6 +12,6 @@ namespace ConsoleEFCore.DbModels
 
         public int ProductId { get; set; }
 
-        public Product Product { get; set; } 
+        public Product Product { get; set; } //navigation property.
     }
 }

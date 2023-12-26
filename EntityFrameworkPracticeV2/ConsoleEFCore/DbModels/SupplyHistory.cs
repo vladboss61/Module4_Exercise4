@@ -9,7 +9,7 @@ namespace ConsoleEFCore.DbModels
 
         public int? ProductId { get; set; } // FK Table Product
 
-        public Product Product { get; set; } // Ref Table Product
+        public Product Product { get; set; } // Ref Table Product navigation property.
 
         public int? CompanyId { get; set; }
 
