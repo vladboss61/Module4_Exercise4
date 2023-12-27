@@ -50,7 +50,7 @@ namespace ConsoleEFCore
             await using (ConsoleApplicationContext context = new ConsoleApplicationContextFactory().CreateDbContext(Array.Empty<string>()))
             {
                 AddEntitiesExample(context);
-                context. .EnsureCreated();
+                context.Database.EnsureCreated();
                 Company[] companies = context.Companies.ToArray();
                 Car[] cars = context.Cars.ToArray();
             }
