@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using ConsoleEFCore.DbModels.HW;
 
 namespace ConsoleEFCore
 {
@@ -48,39 +49,11 @@ namespace ConsoleEFCore
         {
             await using (ConsoleApplicationContext context = new ConsoleApplicationContextFactory().CreateDbContext(Array.Empty<string>()))
             {
-                context.Database.EnsureCreated();
-
-                //No Lazy Loading.
-                var users = context.Users.Include(x => x.Company);
-
-                //Eager Loading.
-                var users1 = context.Companies.Include(x => x.Users.Where(x => x.CompanyId != null));
-
-                Console.WriteLine(users1.ToQueryString());
-                //Console.WriteLine(users.ToQueryString());
-
-                var joined = context.Companies.Join(context.Users, company => company.Id, user => user.CompanyId, (comp, use) =>
-                        new JoinedUserCompany
-                        {
-                            CompanyId = comp.Id,
-                            CompanyName = comp.Name,
-                            UserId = use.UserId,
-                            UserName = use.FirstName + " " + use.LastName,
-                        }).ToArray();
-
-                //Console.WriteLine(joined.ToQueryString());
-
-                //GetEntitiesExample(context);
                 AddEntitiesExample(context);
-                
-                await context.SaveChangesAsync();
-                
-                //AddEntitiesExample(context);
-                
-                EntityStateExample(context);
+                context. .EnsureCreated();
+                Company[] companies = context.Companies.ToArray();
+                Car[] cars = context.Cars.ToArray();
             }
-
-            Console.WriteLine("Hello World!");
         }
 
         private static void EntityStateExample(ConsoleApplicationContext context)
@@ -192,5 +165,4 @@ namespace ConsoleEFCore
             var userProfiles = context.UserProfiles.ToList();
         }
     }
-
 }

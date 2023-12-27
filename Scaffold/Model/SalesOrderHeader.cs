@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EFCoreScaffoldExample.Model
+namespace EFCoreScaffoldexample.Model
 {
     /// <summary>
     /// General sales order information.

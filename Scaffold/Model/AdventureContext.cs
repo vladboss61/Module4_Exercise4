@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace EFCoreScaffoldExample.Model
+namespace EFCoreScaffoldexample.Model
 {
     public partial class AdventureContext : DbContext
     {

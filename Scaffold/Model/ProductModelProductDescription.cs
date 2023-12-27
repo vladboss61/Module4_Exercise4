@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EFCoreScaffoldExample.Model
+namespace EFCoreScaffoldexample.Model
 {
     /// <summary>
     /// Cross-reference table mapping product descriptions and the language the description is written in.

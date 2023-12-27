@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EFCoreScaffoldExample.Model
+namespace EFCoreScaffoldexample.Model
 {
     /// <summary>
     /// Individual products associated with a specific sales order. See SalesOrderHeader.

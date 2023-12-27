@@ -39,6 +39,5 @@ namespace ConsoleEFCore
             modelBuilder.ApplyConfiguration(new UserProfileConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
-
     }
 }

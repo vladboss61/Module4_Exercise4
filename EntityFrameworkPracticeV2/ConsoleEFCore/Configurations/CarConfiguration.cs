@@ -9,7 +9,7 @@ namespace ConsoleEFCore.Configurations
         public void Configure(EntityTypeBuilder<Car> builder)
         {
             builder
-               .ToTable("Car")
+               .ToTable("Cars")
                .HasKey(c => c.Id);
 
             builder
@@ -27,7 +27,7 @@ namespace ConsoleEFCore.Configurations
                 .HasColumnName("Color")
                 .HasMaxLength(150);
 
-            builder.HasData(new []
+            builder.HasData(new[]
             {
                 new Car
                 {

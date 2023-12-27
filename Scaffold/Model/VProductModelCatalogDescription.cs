@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EFCoreScaffoldExample.Model
+namespace EFCoreScaffoldexample.Model
 {
     /// <summary>
     /// Displays the content from each element in the xml column CatalogDescription for each product in the Sales.ProductModel table that has catalog data.

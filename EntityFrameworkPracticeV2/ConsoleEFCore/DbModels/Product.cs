@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using ConsoleEFCore.Configurations;
-using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleEFCore.DbModels
 {

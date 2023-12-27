@@ -16,7 +16,7 @@ namespace ConsoleEFCore.Configurations
                 .Property(p => p.Id)
                 .ValueGeneratedNever();
 
-            //builder.Ignore(x => x.About);
+            builder.Ignore(x => x.About);
 
             builder.HasData(new UserProfile
             {
